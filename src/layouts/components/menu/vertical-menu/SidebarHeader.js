@@ -25,7 +25,7 @@ class SidebarHeader extends Component {
                   alt="logo"
                   height="40px"
                   width="100px"
-                  style={{ marginLeft: "50px" }}
+                  style={{ marginLeft: "4px" }}
                 />
                 {/* <img src={logo} alt="logo" width="100px" height={46} /> */}
               </div>

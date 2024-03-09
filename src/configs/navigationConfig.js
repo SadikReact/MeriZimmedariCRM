@@ -124,18 +124,18 @@ const navigationConfig = [
     navLink: "/app/policy/PolicyRestriction",
   },
 
-  {
-    type: "groupHeader",
-    groupTitle: "Plan Benefits",
-  },
-  {
-    id: "Plan",
-    title: "Plan Benefits",
-    type: "item",
-    icon: <Icon.ArrowRight size={12} />,
-    permissions: ["admin", "editor"],
-    navLink: "/app/plans/PlanBenefitList",
-  },
+  // {
+  //   type: "groupHeader",
+  //   groupTitle: "Plan Benefits",
+  // },
+  // {
+  //   id: "Plan",
+  //   title: "Plan Benefits",
+  //   type: "item",
+  //   icon: <Icon.ArrowRight size={12} />,
+  //   permissions: ["admin", "editor"],
+  //   navLink: "/app/plans/PlanBenefitList",
+  // },
   // {
   //   id: "fnoIndexList",
   //   title: "ApplyList",
@@ -144,64 +144,64 @@ const navigationConfig = [
   //   permissions: ["admin", "editor"],
   //   navLink: "/app/applylist/visitorList",
   // },
-  {
-    type: "groupHeader",
-    groupTitle: "Policy",
-  },
-  {
-    id: "PolicyType",
-    title: "Policy Type",
-    type: "item",
-    icon: <Icon.ArrowRight size={12} />,
-    permissions: ["admin", "editor"],
-    navLink: "/app/policy/PolicyTypeList",
-  },
-  {
-    id: "Policies",
-    title: "Policies",
-    type: "item",
-    icon: <Icon.ArrowRight size={12} />,
-    permissions: ["admin", "editor"],
-    navLink: "/app/policy/PolicyList",
-  },
-  {
-    type: "groupHeader",
-    groupTitle: "Paymemt history",
-  },
-  {
-    id: "usersList",
-    title: "Paymemt history",
-    type: "item",
-    icon: <Icon.ArrowRight size={12} />,
-    permissions: ["admin", "editor"],
-    navLink: "/app/payment/paymentHistoryList",
-  },
-  {
-    type: "groupHeader",
-    groupTitle: "Elite Network",
-  },
-  {
-    id: "allTradeList",
-    title: "Elite Netwirk List",
-    type: "item",
-    icon: <Icon.ArrowRight size={12} />,
-    permissions: ["admin", "editor"],
-    navLink: "/app/plans/EliteNetworkList",
-  },
+  // {
+  //   type: "groupHeader",
+  //   groupTitle: "Policy",
+  // },
+  // {
+  //   id: "PolicyType",
+  //   title: "Policy Type",
+  //   type: "item",
+  //   icon: <Icon.ArrowRight size={12} />,
+  //   permissions: ["admin", "editor"],
+  //   navLink: "/app/policy/PolicyTypeList",
+  // },
+  // {
+  //   id: "Policies",
+  //   title: "Policies",
+  //   type: "item",
+  //   icon: <Icon.ArrowRight size={12} />,
+  //   permissions: ["admin", "editor"],
+  //   navLink: "/app/policy/PolicyList",
+  // },
+  // {
+  //   type: "groupHeader",
+  //   groupTitle: "Paymemt history",
+  // },
+  // {
+  //   id: "usersList",
+  //   title: "Paymemt history",
+  //   type: "item",
+  //   icon: <Icon.ArrowRight size={12} />,
+  //   permissions: ["admin", "editor"],
+  //   navLink: "/app/payment/paymentHistoryList",
+  // },
+  // {
+  //   type: "groupHeader",
+  //   groupTitle: "Elite Network",
+  // },
+  // {
+  //   id: "allTradeList",
+  //   title: "Elite Netwirk List",
+  //   type: "item",
+  //   icon: <Icon.ArrowRight size={12} />,
+  //   permissions: ["admin", "editor"],
+  //   navLink: "/app/plans/EliteNetworkList",
+  // },
 
-  {
-    type: "groupHeader",
-    groupTitle: "Create Agent",
-  },
+  // {
+  //   type: "groupHeader",
+  //   groupTitle: "Create Agent",
+  // },
 
-  {
-    id: "agentList",
-    title: "AgentList ",
-    type: "item",
-    icon: <Icon.ArrowRight size={12} />,
-    permissions: ["admin", "editor"],
-    navLink: "/app/agent/AgentList",
-  },
+  // {
+  //   id: "agentList",
+  //   title: "AgentList ",
+  //   type: "item",
+  //   icon: <Icon.ArrowRight size={12} />,
+  //   permissions: ["admin", "editor"],
+  //   navLink: "/app/agent/AgentList",
+  // },
 
   {
     type: "groupHeader",

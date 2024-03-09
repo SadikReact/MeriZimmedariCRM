@@ -682,7 +682,7 @@ class AppRouter extends React.Component {
               component={EditPlanDetail}
             />
             <AppRoute path="/app/claims/ViewClaims" component={ViewClaims} />
-            <AppRoute path="/app/plan/AddPlanType" component={AddPlanType} />
+            <AppRoute path="/app/AddAssets" component={AddPlanType} />
             <AppRoute path="/app/plan/AddplanPrice" component={AddPlanPrice} />
             <AppRoute
               path="/app/plan/ListPlanPrice"

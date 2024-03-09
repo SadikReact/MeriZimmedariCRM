@@ -175,7 +175,7 @@ class PlanTypeList extends React.Component {
           <Row className="m-1">
             <Col>
               <h1 col-sm-6 className="float-left">
-                PlanType List
+                Assets List
               </h1>
             </Col>
             <Col className="">
@@ -184,9 +184,9 @@ class PlanTypeList extends React.Component {
                   <Button
                     className=" btn  float-right"
                     color="primary"
-                    onClick={() => history.push("/app/plan/AddPlanType")}
+                    onClick={() => history.push("/app/AddAssets")}
                   >
-                    Add PlanType
+                    Add Assets
                   </Button>
                 )}
               />

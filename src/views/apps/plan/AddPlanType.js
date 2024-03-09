@@ -9,7 +9,6 @@ import {
   Input,
   Button,
 } from "reactstrap";
-// import swal from "sweetalert";
 import { Route } from "react-router-dom";
 import axiosConfig from "../../../axiosConfig";
 import { EditorState, convertToRaw } from "draft-js";
@@ -34,40 +33,54 @@ class AddPlanType extends React.Component {
       desc: draftToHtml(convertToRaw(editorState.getCurrentContent())),
     });
   };
-  changeHandler1 = (e) => {
-    this.setState({ status: e.target.value });
+  // changeHandler1 = (e) => {
+  //   this.setState({ status: e.target.value });
+  // };
+  // changeHandler = (e) => {
+  //   this.setState({ [e.target.name]: e.target.value });
+  // };
+  handleFileChange = (event) => {
+    // console.log(event.target.files[0]);
+    this.setState({ files: event.target.files[0] });
   };
-  changeHandler = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
-  submitHandler = (e) => {
-    const adminId = localStorage.getItem("userId");
-    e.preventDefault();
-    const description = {
-      plan_type: this.state.planType,
-      plan_desc: this.state.desc,
-    };
 
+  submitHandler = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("file", this.state.files);
     axiosConfig
-      .post(`/admin/add_plan_typ/${adminId}`, description)
+      .post("/admin/import-data", formData)
       .then((response) => {
-        console.log(response);
-        swal("Success!", "Submitted SuccessFull!", "success");
-        this.setState({ desc: "" });
-        this.props.history.push("/app/plan/PlanTypeList");
+        console.log(response.data.message);
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
+    // const description = {
+    //   plan_type: this.state.planType,
+    //   plan_desc: this.state.desc,
+    // };
+
+    // axiosConfig
+    //   .post("", description)
+    //   .then((response) => {
+    //     console.log(response);
+    //     swal("Success!", "Submitted SuccessFull!", "success");
+    //     this.setState({ desc: "" });
+    //     this.props.history.push("/app/plan/PlanTypeList");
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   };
 
   render() {
     return (
       <div>
         <Breadcrumbs
-          breadCrumbTitle="PlanType"
+          breadCrumbTitle="Add Assets"
           breadCrumbParent="Home"
-          breadCrumbActive="PlanType"
+          breadCrumbActive="Add Assets"
         />
         <Card>
           <Row className="m-2">
@@ -93,61 +106,13 @@ class AddPlanType extends React.Component {
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row>
                 <Col lg="6" md="6" sm="12" className="mb-2">
-                  <Label>Assets </Label>
+                  <Label>Assets</Label>
                   <Input
                     type="file"
-                    name="planType"
-                    placeholder="PlanType"
-                    value={this.state.planType}
-                    onChange={this.changeHandler}
+                    name="assetName"
+                    onChange={this.handleFileChange}
                   />
                 </Col>
-                {/* <Col lg="6" md="6" sm="12" className="mb-2">
-                  <Label>Descripition</Label>
-                  <Editor
-                    toolbarClassName="demo-toolbar-absolute"
-                    wrapperClassName="demo-wrapper"
-                    editorClassName="demo-editor"
-                    editorState={this.state.editorState}
-                    onEditorStateChange={this.onEditorStateChange}
-                    toolbar={{
-                      options: [
-                        "inline",
-                        "blockType",
-                        "fontSize",
-                        "fontFamily",
-                      ],
-                      inline: {
-                        options: [
-                          "bold",
-                          "italic",
-                          "underline",
-                          "strikethrough",
-                          "monospace",
-                        ],
-                        bold: { className: "bordered-option-classname" },
-                        italic: { className: "bordered-option-classname" },
-                        underline: { className: "bordered-option-classname" },
-                        strikethrough: {
-                          className: "bordered-option-classname",
-                        },
-                        code: { className: "bordered-option-classname" },
-                      },
-                      blockType: {
-                        className: "bordered-option-classname",
-                      },
-                      fontSize: {
-                        className: "bordered-option-classname",
-                      },
-                      fontFamily: {
-                        className: "bordered-option-classname",
-                      },
-                    }}
-                  />
-                </Col> */}
-              </Row>
-
-              <Row>
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Button.Ripple
                     color="primary"
