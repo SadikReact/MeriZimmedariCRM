@@ -34,7 +34,6 @@ export default class AddPlan extends Component {
       CoverageCntry: "",
       policy_combination_active: "",
       selectedValue: "",
-      // list: [{ name: "BASIC" }, { name: "PRE-EX" }],
       list: [],
       planBenefitsCode_fk: "",
       policy_ID_fk: "",

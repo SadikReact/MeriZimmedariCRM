@@ -8,8 +8,8 @@ import {
   Label,
   Input,
   Button,
+  FormGroup,
 } from "reactstrap";
-// import swal from "sweetalert";
 import { Route } from "react-router-dom";
 import axiosConfig from "../../../axiosConfig";
 import { EditorState, convertToRaw } from "draft-js";
@@ -34,30 +34,57 @@ class AddPlanType extends React.Component {
       desc: draftToHtml(convertToRaw(editorState.getCurrentContent())),
     });
   };
-  changeHandler1 = (e) => {
-    this.setState({ status: e.target.value });
+  // changeHandler1 = (e) => {
+  //   this.setState({ status: e.target.value });
+  // };
+  // changeHandler = (e) => {
+  //   this.setState({ [e.target.name]: e.target.value });
+  // };
+  handleFileChange1 = (event) => {
+    console.log(event.target.files[0]);
+    this.setState({ files: event.target.files[0] });
   };
-  changeHandler = (e) => {
+  handleFileChange = (e) => {
+    console.log(e.target.value);
     this.setState({ [e.target.name]: e.target.value });
   };
-  submitHandler = (e) => {
-    const adminId = localStorage.getItem("userId");
-    e.preventDefault();
-    const description = {
-      plan_type: this.state.planType,
-      plan_desc: this.state.desc,
-    };
 
+  submitHandler1 = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("file", this.state.files);
     axiosConfig
-      .post(`/admin/add_plan_typ/${adminId}`, description)
+      .post("/admin/import-data", formData)
       .then((response) => {
-        console.log(response);
-        swal("Success!", "Submitted SuccessFull!", "success");
-        this.setState({ desc: "" });
-        this.props.history.push("/app/plan/PlanTypeList");
+        // console.log(response.data.message);
+        swal("Success!", response.data.message, "success");
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
+      });
+  };
+  submitHandler = (e) => {
+    e.preventDefault();
+    const payload = {
+      Asset_Type: this.state.assetType,
+      Field_1: this.state.field1,
+      Field_2: this.state.field2,
+      Field_3: this.state.field3,
+      Field_4: this.state.field4,
+      Drop_down_Menu_Options: this.state.company,
+      // Offered_by_Post_office: this.state.field4,
+    };
+    console.log(payload);
+    // const formData = new FormData();
+    // formData.append("file", this.state.files);
+    axiosConfig
+      .post("/admin/save-field", payload)
+      .then((response) => {
+        console.log(response.data.message);
+        swal("Success!", response.data.message, "success");
+      })
+      .catch((error) => {
+        console.error(error);
       });
   };
 
@@ -65,9 +92,9 @@ class AddPlanType extends React.Component {
     return (
       <div>
         <Breadcrumbs
-          breadCrumbTitle="PlanType"
+          breadCrumbTitle="Add Assets"
           breadCrumbParent="Home"
-          breadCrumbActive="PlanType"
+          breadCrumbActive="Add Assets"
         />
         <Card>
           <Row className="m-2">
@@ -90,63 +117,111 @@ class AddPlanType extends React.Component {
             </Col>
           </Row>
           <CardBody>
+            <Form className="m-1" onSubmit={this.submitHandler1}>
+              <Row>
+                <Col lg="6" md="6" sm="12" className="mb-2">
+                  <Label>Assets</Label>
+                  <Input
+                    type="file"
+                    name="assetName"
+                    onChange={this.handleFileChange1}
+                  />
+                </Col>
+                <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Button.Ripple
+                    color="primary"
+                    type="submit"
+                    className="mr-1 mb-1"
+                  >
+                    Submit
+                  </Button.Ripple>
+                </Col>
+              </Row>
+              <h2>Asset Fields</h2>
+            </Form>
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row>
                 <Col lg="6" md="6" sm="12" className="mb-2">
-                  <Label>Assets </Label>
+                  <Label>Assets Type</Label>
                   <Input
-                    type="file"
-                    name="planType"
-                    placeholder="PlanType"
-                    value={this.state.planType}
-                    onChange={this.changeHandler}
+                    type="text"
+                    name="assetType"
+                    value={this.state.assetType}
+                    placeholder="Asset Type"
+                    onChange={this.handleFileChange}
                   />
                 </Col>
-                {/* <Col lg="6" md="6" sm="12" className="mb-2">
-                  <Label>Descripition</Label>
-                  <Editor
-                    toolbarClassName="demo-toolbar-absolute"
-                    wrapperClassName="demo-wrapper"
-                    editorClassName="demo-editor"
-                    editorState={this.state.editorState}
-                    onEditorStateChange={this.onEditorStateChange}
-                    toolbar={{
-                      options: [
-                        "inline",
-                        "blockType",
-                        "fontSize",
-                        "fontFamily",
-                      ],
-                      inline: {
-                        options: [
-                          "bold",
-                          "italic",
-                          "underline",
-                          "strikethrough",
-                          "monospace",
-                        ],
-                        bold: { className: "bordered-option-classname" },
-                        italic: { className: "bordered-option-classname" },
-                        underline: { className: "bordered-option-classname" },
-                        strikethrough: {
-                          className: "bordered-option-classname",
-                        },
-                        code: { className: "bordered-option-classname" },
-                      },
-                      blockType: {
-                        className: "bordered-option-classname",
-                      },
-                      fontSize: {
-                        className: "bordered-option-classname",
-                      },
-                      fontFamily: {
-                        className: "bordered-option-classname",
-                      },
-                    }}
-                  />
-                </Col> */}
-              </Row>
 
+                <Col lg="6" md="6" sm="12" className="mb-2">
+                  <Label>Filed 1</Label>
+                  <Input
+                    type="text"
+                    placeholder="Field 1"
+                    name="field1"
+                    value={this.state.field1}
+                    onChange={this.handleFileChange}
+                  />
+                </Col>
+                <Col lg="6" md="6" sm="12" className="mb-2">
+                  <Label>Filed 2</Label>
+                  <Input
+                    type="text"
+                    placeholder="Field 2"
+                    name="field2"
+                    value={this.state.field2}
+                    onChange={this.handleFileChange}
+                  />
+                </Col>
+                <Col lg="6" md="6" sm="12" className="mb-2">
+                  <Label>Filed 3</Label>
+                  <Input
+                    type="text"
+                    placeholder="Field 3"
+                    name="field3"
+                    value={this.state.field3}
+                    onChange={this.handleFileChange}
+                  />
+                </Col>
+                <Col lg="6" md="6" sm="12" className="mb-2">
+                  <Label>Filed 4</Label>
+                  <Input
+                    type="text"
+                    placeholder="Field 4"
+                    name="field4"
+                    value={this.state.field4}
+                    onChange={this.handleFileChange}
+                  />
+                </Col>
+                <Col lg="6" md="6" sm="12" className="">
+                  <Label for="data-category">Drop_down_Menu_Options</Label>
+                  <FormGroup>
+                    <Input
+                      type="select"
+                      required
+                      id="data-category"
+                      name="company"
+                      value={this.state.company}
+                      onChange={this.handleFileChange}
+                      defaultValue=""
+                    >
+                      <option disabled value="">
+                        Select Company
+                      </option>
+                      <option value="5">All Insurance companies</option>
+                      <option value="Employees' Provident Fund Organization & Trusts">
+                        Employees' Provident Fund Organization & Trusts
+                      </option>
+                      <option value="Pension Fund Regulatory and Development Authority (PFRDA)">
+                        Pension Fund Regulatory and Development Authority
+                        (PFRDA)
+                      </option>
+                      <option value="Post Office & All Banks">
+                        Post Office & All Banks
+                      </option>
+                    </Input>
+                  </FormGroup>
+                </Col>
+              </Row>
               <Row>
                 <Col lg="6" md="6" sm="6" className="mb-2">
                   <Button.Ripple
