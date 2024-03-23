@@ -34,15 +34,15 @@ const NavbarUser = () => {
   useEffect(() => {
     let adminId = localStorage.getItem("userId");
     // tokenVerify();
-    async function getNotifications() {
-      try {
-        const data = await axiosConfig.get(`/admin/viewoneadmin/${adminId}`);
-        setAdminimg(data.data.data);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    getNotifications();
+    // async function getNotifications() {
+    //   try {
+    //     const data = await axiosConfig.get(`/admin/viewoneadmin/${adminId}`);
+    //     setAdminimg(data.data.data);
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // }
+    // getNotifications();
   }, []);
 
   return (

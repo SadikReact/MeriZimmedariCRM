@@ -29,57 +29,51 @@ export default class EditPlanType extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      planType: "",
-      planDescription: "",
-      editorState: EditorState.createEmpty(),
+      // file(uploadPolicy),
+      policynumber: "",
+      policyIssuersName: "",
+      ReEnterPolicyNumber: "",
+      // status:""
     };
   }
   componentDidMount() {
     let { id } = this.props.match.params;
     axiosConfig
-      .get(`/admin/getOne_plantyp/${id}`)
+      .get(`/asset/view-asset-by-id/${id}`)
       .then((response) => {
-        console.log(response.data.data);
-        const { plan_type, plan_desc } = response.data.data;
-        const description = plan_desc;
-        const contentState = ContentState.createFromBlockArray(
-          convertFromHTML(description)
-        );
-        const editorState = EditorState.createWithContent(contentState);
+        const { policyIssuersName, policynumber, ReEnterPolicyNumber, status } =
+          response.data.Asset;
         this.setState({
-          planType: plan_type,
-          planDescription: plan_desc,
-          editorState: editorState,
+          policynumber: policynumber,
+          policyIssuersName: policyIssuersName,
+          ReEnterPolicyNumber: ReEnterPolicyNumber,
         });
       })
       .catch((error) => {
         console.log(error.response);
       });
   }
-  onEditorStateChange = (editorState) => {
-    this.setState({
-      editorState,
-      planDescription: draftToHtml(
-        convertToRaw(editorState.getCurrentContent())
-      ),
-    });
+  changeHandler1 = (e) => {
+    this.setState({ status: e.target.value });
   };
+
   changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
   submitHandler = (e) => {
     const payload = {
-      plan_type: this.state.planType,
-      plan_desc: this.state.planDescription,
+      policynumber: this.state.policynumber,
+      policyIssuersName: this.state.policyIssuersName,
+      ReEnterPolicyNumber: this.state.ReEnterPolicyNumber,
+      // file (uploadPolicy),policynumber,policyIssuersName,ReEnterPolicyNumber,userId
     };
     e.preventDefault();
     let { id } = this.props.match.params;
     axiosConfig
-      .post(`/admin/edit_plantyp/${id}`, payload)
+      .put(`/asset/update-asset/${id}`, payload)
       .then((response) => {
-        console.log(response);
         swal("Success!", "Submitted SuccessFull!", "success");
-        this.props.history.push(`/app/plan/PlanTypeList`);
+        this.props.history.push(`/app/assets/AsstesList`);
       })
       .catch((error) => {
         console.log(error.response);
@@ -96,7 +90,7 @@ export default class EditPlanType extends Component {
                 <BreadcrumbItem href="/" tag="a">
                   Home
                 </BreadcrumbItem>
-                <BreadcrumbItem active>Edit PlanType</BreadcrumbItem>
+                <BreadcrumbItem active>Edit Asset</BreadcrumbItem>
               </Breadcrumb>
             </div>
           </Col>
@@ -105,7 +99,7 @@ export default class EditPlanType extends Component {
           <Row className="m-2">
             <Col>
               <h1 col-sm-6 className="float-left">
-                Edit PlanType
+                Edit Asset
               </h1>
             </Col>
             <Col>
@@ -113,7 +107,7 @@ export default class EditPlanType extends Component {
                 render={({ history }) => (
                   <Button
                     className=" btn btn-danger float-right"
-                    onClick={() => history.push("/app/plan/PlanTypeList")}
+                    onClick={() => history.push("/app/assets/AsstesList")}
                   >
                     Back
                   </Button>
@@ -125,59 +119,59 @@ export default class EditPlanType extends Component {
             <Form className="m-1" onSubmit={this.submitHandler}>
               <Row>
                 <Col lg="6" md="6" sm="12" className="mb-2">
-                  <Label>PlanType </Label>
+                  <Label>Policy Number </Label>
                   <Input
                     type="text"
-                    name="planType"
-                    placeholder="PlanType"
-                    value={this.state.planType}
+                    name="policynumber"
+                    placeholder="policynumber"
+                    value={this.state.policynumber}
                     onChange={this.changeHandler}
                   />
                 </Col>
-                <Col lg="6" md="6" sm="6" className="mb-2">
-                  <Label>Descripition</Label>
-                  <Editor
-                    toolbarClassName="demo-toolbar-absolute"
-                    wrapperClassName="demo-wrapper"
-                    editorClassName="demo-editor"
-                    editorState={this.state.editorState}
-                    onEditorStateChange={this.onEditorStateChange}
-                    defaultContentState={ReactHtmlParser(this.state.desc)}
-                    toolbar={{
-                      options: [
-                        "inline",
-                        "blockType",
-                        "fontSize",
-                        "fontFamily",
-                      ],
-                      inline: {
-                        options: [
-                          "bold",
-                          "italic",
-                          "underline",
-                          "strikethrough",
-                          "monospace",
-                        ],
-                        bold: { className: "bordered-option-classname" },
-                        italic: { className: "bordered-option-classname" },
-                        underline: { className: "bordered-option-classname" },
-                        strikethrough: {
-                          className: "bordered-option-classname",
-                        },
-                        code: { className: "bordered-option-classname" },
-                      },
-                      blockType: {
-                        className: "bordered-option-classname",
-                      },
-                      fontSize: {
-                        className: "bordered-option-classname",
-                      },
-                      fontFamily: {
-                        className: "bordered-option-classname",
-                      },
-                    }}
+
+                <Col lg="6" md="6" sm="12" className="mb-2">
+                  <Label>Policy IssuersName</Label>
+                  <Input
+                    type="text"
+                    name="policyIssuersName"
+                    placeholder="policyIssuersName"
+                    value={this.state.policyIssuersName}
+                    onChange={this.changeHandler}
                   />
                 </Col>
+                <Col lg="6" md="6" sm="12" className="mb-2">
+                  <Label>ReEnter PolicyNumber</Label>
+                  <Input
+                    type="text"
+                    name="ReEnterPolicyNumber"
+                    placeholder="ReEnterPolicyNumber"
+                    value={this.state.ReEnterPolicyNumber}
+                    onChange={this.changeHandler}
+                  />
+                </Col>
+                {/* <Col lg="6" md="6" sm="6" className="mb-2">
+                  <Label className="mb-1">Status</Label>
+                  <div
+                    className="form-label-group"
+                    onChange={(e) => this.changeHandler1(e)}
+                  >
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="status"
+                      value="Active"
+                    />
+                    <span style={{ marginRight: "20px" }}>Active</span>
+
+                    <input
+                      style={{ marginRight: "3px" }}
+                      type="radio"
+                      name="status"
+                      value="false"
+                    />
+                    <span style={{ marginRight: "3px" }}>Deactive</span>
+                  </div>
+                </Col> */}
               </Row>
               <Row>
                 <Col
