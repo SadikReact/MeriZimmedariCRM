@@ -37,22 +37,6 @@ const ThemeNavbar = (props) => {
 
   const [userData] = useState("");
 
-  // useEffect(() => {
-  //   console.log('mount it!')
-  //   axiosConfig
-  //     .get(`http://15.206.122.110:4000/api/user/viewoneadmin/629b43e4b481821324ad3006`)
-  //     .then((response) => {
-  //       //console.log(response.data);
-  //       console.log(response.data.data);
-  //       //this.setState({ data: response.data.data });
-  //       setUserData(response.data?.data?.name)
-  //     })
-  //     .catch((error) => {
-  //       console.log(error.response);
-  //     });
-
-  // }, [])
-
   return (
     <React.Fragment>
       <div className="content-overlay" />

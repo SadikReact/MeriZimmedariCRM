@@ -14,12 +14,12 @@ import {
 import { Route } from "react-router-dom";
 import { AgGridReact } from "ag-grid-react";
 import axiosConfig from "../../../axiosConfig";
-import { ChevronDown, Edit, Trash2 } from "react-feather";
+import { ChevronDown, Edit, Eye, Trash2 } from "react-feather";
 import { ContextLayout } from "../../../utility/context/Layout";
 import "../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 import swal from "sweetalert";
 import ReactHtmlParser from "react-html-parser";
-class PlanTypeList extends React.Component {
+class AssetList extends React.Component {
   state = {
     rowData: [],
     paginationPageSize: 20,
@@ -49,67 +49,94 @@ class PlanTypeList extends React.Component {
             <div className="actions cursor-pointer">
               <Route
                 render={({ history }) => (
-                  <Edit
+                  <Eye
                     className="mr-50"
                     size="25px"
-                    color="blue"
+                    color="green"
                     onClick={() =>
                       history.push({
-                        pathname: `/app/plan/EditPlanType/${params.data._id}`,
+                        pathname: `/app/asset/ViewAsset/${params?.data?._id}`,
                         state: params.data,
                       })
                     }
                   />
                 )}
               />
+              {/* <Route
+                render={({ history }) => (
+                  <Edit
+                    className="mr-50"
+                    size="25px"
+                    color="blue"
+                    onClick={() =>
+                      history.push({
+                        pathname: `/app/asset/EditAsset/${params?.data?._id}`,
+                        state: params.data,
+                      })
+                    }
+                  />
+                )}
+              /> */}
 
-              <Trash2
+              {/* <Trash2
                 className="mr-50"
                 size="25px"
                 color="red"
                 onClick={() => {
-                  this.runthisfunction(params.data._id);
+                  this.runthisfunction(params.data?._id);
                 }}
-              />
+              /> */}
             </div>
           );
         },
       },
 
       {
-        headerName: "PlanType",
+        headerName: "PolicyIssuersName",
         field: "PlanType",
         // filter: true,
-        width: 150,
+        width: 180,
         cellRendererFramework: (params) => {
-          return <div className="">{params?.data?.plan_type}</div>;
+          return <div className="">{params?.data?.policyIssuersName}</div>;
         },
       },
       {
-        headerName: "PlanType Description",
-        field: "Description",
-        filter: true,
-        width: 500,
+        headerName: "Policy Number",
+        field: "PlanType",
+        // filter: true,
+        width: 180,
         cellRendererFramework: (params) => {
-          return (
-            <div className="">
-              <span className="">
-                {ReactHtmlParser(params?.data?.plan_desc)}
-              </span>
-            </div>
-          );
+          return <div className="">{params?.data?.policynumber}</div>;
+        },
+      },
+      // {
+      //   headerName: "status",
+      //   field: "PlanType",
+      //   // filter: true,
+      //   width: 150,
+      //   cellRendererFramework: (params) => {
+      //     return <div className="">{params?.data?.status}</div>;
+      //   },
+      // },
+      {
+        headerName: "ReEnterPolicyNumber",
+        field: "reEnterPolicyNumber",
+        // filter: true,
+        width: 250,
+        cellRendererFramework: (params) => {
+          return <div className="">{params?.data?.ReEnterPolicyNumber}</div>;
         },
       },
     ],
   };
   componentDidMount() {
-    this.planTypeList();
+    this.AssetList();
   }
-  planTypeList = () => {
+  AssetList = () => {
     axiosConfig
-      .get("/admin/get_plan_typ")
+      .get("/asset/view-asset")
       .then((response) => {
-        const rowData = response.data.data;
+        const rowData = response.data.Asset;
         this.setState({ rowData });
       })
       .catch((err) => {
@@ -118,7 +145,6 @@ class PlanTypeList extends React.Component {
   };
 
   runthisfunction(id) {
-    console.log(id);
     swal(
       `Do You Want To Delete Permanently`,
       "This item will be deleted immediately",
@@ -134,8 +160,8 @@ class PlanTypeList extends React.Component {
         case "cancel":
           break;
         case "catch":
-          axiosConfig.delete(`/admin/dlt_plantyp/${id}`).then((response) => {
-            this.planTypeList();
+          axiosConfig.delete(`/asset/delete-asset/${id}`).then((response) => {
+            this.AssetList();
           });
           break;
         default:
@@ -286,4 +312,4 @@ class PlanTypeList extends React.Component {
     );
   }
 }
-export default PlanTypeList;
+export default AssetList;

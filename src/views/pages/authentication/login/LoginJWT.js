@@ -54,37 +54,34 @@ class LoginJWT extends React.Component {
 
   handleLogin = (e) => {
     e.preventDefault();
-    // const payload = {
-    //   email: this.state.email,
-    //   password: this.state.password,
-    // };
-    // axiosConfig
-    //   .post("/admin/adminlogin", payload)
-    //   .then((response) => {
-    //     debugger
-    //     console.log(response)
-    //     if (response.status === 200) {
-    //       // this.setState({ ShowScreen: true });
-    //       localStorage.setItem("ad-token", response.data.token);
-    //       localStorage.setItem("AdminData", JSON.stringify(response.data));
-    //       localStorage.setItem("userId", response.data.data._id);
-    //       window.location.replace("/#");
-    //       swal("Login Successfully");
-    //       // swal("OTP has been sent to Your Mail Id", "Please Verify OTP");
-    //     } else if (response.status === 204 || response.status === 400) {
-    //       swal("Some Thing went Wrong");
-    //     } else {
-    //       swal("Some Thing went Wrong");
-    //     }
-    //   })
+    const payload = {
+      email: this.state.email,
+      password: this.state.password,
+    };
+    axiosConfig
+      .post("/admin/signin", payload)
+      .then((response) => {
+        if (response.status === 200) {
+          // this.setState({ ShowScreen: true });
+          localStorage.setItem("ad-token", response.data.Admin?.token);
+          localStorage.setItem("AdminData", JSON.stringify(response.data));
+          localStorage.setItem("userId", response.data.Admin._id);
+          window.location.replace("/#");
+          swal("Login Successfully");
+        } else if (response.status === 204 || response.status === 400) {
+          swal("Some Thing went Wrong");
+        } else {
+          swal("Some Thing went Wrong");
+        }
+      })
 
-    //   .catch((error) => {
-    //     swal(
-    //       "error!",
-    //       "Invalied! Please Enter Valid Email. or Password",
-    //       "error"
-    //     );
-    //   });
+      .catch((error) => {
+        swal(
+          "error!",
+          "Invalied! Please Enter Valid Email. or Password",
+          "error"
+        );
+      });
     window.location.replace("/#");
   };
   render() {

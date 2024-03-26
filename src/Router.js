@@ -7,7 +7,7 @@ import Spinner from "./components/@vuexy/spinner/Loading-spinner";
 import knowledgeBaseCategory from "./views/pages/knowledge-base/Category";
 import knowledgeBaseQuestion from "./views/pages/knowledge-base/Questions";
 import { ContextLayout } from "./utility/context/Layout";
-import EditPlanType from "./views/apps/plan/EditPlanType";
+import EditAsset from "./views/apps/plan/EditPlanType";
 
 const analyticsDashboard = lazy(() =>
   import("./views/dashboard/analytics/AnalyticsDashboard")
@@ -147,6 +147,14 @@ const AddPlanDetail = lazy(() =>
 const EditPlanDetail = lazy(() =>
   import("./views/apps/PlanDetails/EditPlanDetail")
 );
+
+// meri zimmedari open
+const UserList = lazy(() => import("./views/apps/zimmedari/users/UserList"));
+const NomineeList = lazy(() => import("./views/apps/zimmedari/NomineeList"));
+const ViewNominee = lazy(() => import("./views/apps/zimmedari/ViewNominee"));
+const EditNominee = lazy(() => import("./views/apps/zimmedari/EditNominee"));
+
+// meri zimmedari close
 // Claims
 const ViewClaims = lazy(() => import("./views/apps/claims/ViewClaims"));
 // Agent
@@ -166,7 +174,8 @@ const EditPlanPrice = lazy(() =>
 const ViewPlanPrice = lazy(() =>
   import("./views/apps/planPrice/ViewPlanPrice")
 );
-const PlanTypeList = lazy(() => import("./views/apps/plan/PlanTypeList"));
+const AssetList = lazy(() => import("./views/apps/plan/PlanTypeList"));
+const ViewAsset = lazy(() => import("./views/apps/plan/ViewAsset"));
 const AddPlanType = lazy(() => import("./views/apps/plan/AddPlanType"));
 const PolicyTypeList = lazy(() =>
   import("./views/apps/policy/policyType/PolicyTypeList")
@@ -544,14 +553,14 @@ const mapStateToProps = (state) => {
 const AppRoute = connect(mapStateToProps)(RouteConfig);
 
 class AppRouter extends React.Component {
-  // componentDidMount() {
-  //   let data = localStorage.getItem("ad-token");
+  componentDidMount() {
+    let data = localStorage.getItem("ad-token");
 
-  //   sessionStorage.clear();
-  //   if (data === undefined || data === null) {
-  //     window.location.replace("/#/pages/login");
-  //   }
-  // }
+    sessionStorage.clear();
+    if (data === undefined || data === null) {
+      window.location.replace("/#/pages/login");
+    }
+  }
   render() {
     return (
       // Set the directory path if you are deploying in sub-folder
@@ -681,6 +690,12 @@ class AppRouter extends React.Component {
               path="/app/plans/EditPlanDetail/:id"
               component={EditPlanDetail}
             />
+            {/* zimmedari route open */}
+            <AppRoute path="/app/user/UserList" component={UserList} />
+            <AppRoute path="/app/nominee/NomineeList" component={NomineeList} />
+            <AppRoute path="/app/nominee/ViewNominee" component={ViewNominee} />
+            <AppRoute path="/app/nominee/EditNominee" component={EditNominee} />
+            {/* zimmedari route closed */}
             <AppRoute path="/app/claims/ViewClaims" component={ViewClaims} />
             <AppRoute path="/app/AddAssets" component={AddPlanType} />
             <AppRoute path="/app/plan/AddplanPrice" component={AddPlanPrice} />
@@ -696,11 +711,9 @@ class AppRouter extends React.Component {
               path="/app/plan/ViewPlanPrice/:id"
               component={ViewPlanPrice}
             />
-            <AppRoute
-              path="/app/plan/EditPlanType/:id"
-              component={EditPlanType}
-            />
-            <AppRoute path="/app/plan/PlanTypeList" component={PlanTypeList} />
+            <AppRoute path="/app/asset/EditAsset/:id" component={EditAsset} />
+            <AppRoute path="/app/asset/ViewAsset/:id" component={ViewAsset} />
+            <AppRoute path="/app/assets/AsstesList" component={AssetList} />
             <AppRoute
               path="/app/policy/PolicyTypeList"
               component={PolicyTypeList}
