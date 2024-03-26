@@ -62,7 +62,7 @@ class NomineeList extends React.Component {
                   />
                 )}
               />
-              <Route
+              {/* <Route
                 render={({ history }) => (
                   <Edit
                     className="mr-50"
@@ -76,23 +76,32 @@ class NomineeList extends React.Component {
                     }
                   />
                 )}
-              />
+              /> */}
 
-              <Trash2
+              {/* <Trash2
                 className="mr-50"
                 size="25px"
                 color="red"
                 onClick={() => {
                   this.runthisfunction(params.data?._id);
                 }}
-              />
+              /> */}
             </div>
           );
         },
       },
 
       {
-        headerName: "Name",
+        headerName: "UserName ",
+        field: "name",
+        filter: true,
+        width: 150,
+        cellRendererFramework: (params) => {
+          return <div className="">{params?.data?.userId.firstName}</div>;
+        },
+      },
+      {
+        headerName: "Nominee Name",
         field: "name",
         filter: true,
         width: 150,
@@ -118,10 +127,10 @@ class NomineeList extends React.Component {
         },
       },
       {
-        headerName: "Nominee PhoneNumber",
+        headerName: " PhoneNumber",
         field: "NomineePhoneNumber",
         filter: true,
-        width: 200,
+        width: 220,
         cellRendererFramework: (params) => {
           return (
             <div className="">

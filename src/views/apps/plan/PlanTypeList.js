@@ -62,7 +62,7 @@ class AssetList extends React.Component {
                   />
                 )}
               />
-              <Route
+              {/* <Route
                 render={({ history }) => (
                   <Edit
                     className="mr-50"
@@ -76,26 +76,26 @@ class AssetList extends React.Component {
                     }
                   />
                 )}
-              />
+              /> */}
 
-              <Trash2
+              {/* <Trash2
                 className="mr-50"
                 size="25px"
                 color="red"
                 onClick={() => {
                   this.runthisfunction(params.data?._id);
                 }}
-              />
+              /> */}
             </div>
           );
         },
       },
 
       {
-        headerName: "policyIssuersName",
+        headerName: "PolicyIssuersName",
         field: "PlanType",
         // filter: true,
-        width: 150,
+        width: 180,
         cellRendererFramework: (params) => {
           return <div className="">{params?.data?.policyIssuersName}</div>;
         },
@@ -104,7 +104,7 @@ class AssetList extends React.Component {
         headerName: "Policy Number",
         field: "PlanType",
         // filter: true,
-        width: 150,
+        width: 180,
         cellRendererFramework: (params) => {
           return <div className="">{params?.data?.policynumber}</div>;
         },
@@ -120,9 +120,9 @@ class AssetList extends React.Component {
       // },
       {
         headerName: "ReEnterPolicyNumber",
-        field: "PlanType",
+        field: "reEnterPolicyNumber",
         // filter: true,
-        width: 150,
+        width: 250,
         cellRendererFramework: (params) => {
           return <div className="">{params?.data?.ReEnterPolicyNumber}</div>;
         },

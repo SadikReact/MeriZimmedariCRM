@@ -47,7 +47,7 @@ class UserList extends React.Component {
         cellRendererFramework: (params) => {
           return (
             <div className="actions cursor-pointer">
-              <Route
+              {/* <Route
                 render={({ history }) => (
                   <Edit
                     className="mr-50"
@@ -61,16 +61,16 @@ class UserList extends React.Component {
                     }
                   />
                 )}
-              />
+              /> */}
 
-              <Trash2
+              {/* <Trash2
                 className="mr-50"
                 size="25px"
                 color="red"
                 onClick={() => {
                   this.runthisfunction(params.data._id);
                 }}
-              />
+              /> */}
             </div>
           );
         },
@@ -101,8 +101,13 @@ class UserList extends React.Component {
         width: 150,
         cellRendererFramework: (params) => {
           return (
-            <div className="" style={{ width: "100" }}>
-              <img src={params?.data?.image} alt="Img" />
+            <div className="mainImg">
+              <img
+                className="Picture"
+                style={{ width: "160px" }}
+                src={params?.data?.image}
+                alt="Img"
+              />
             </div>
           );
         },
@@ -131,7 +136,7 @@ class UserList extends React.Component {
     axiosConfig
       .get("/user-list")
       .then((response) => {
-        console.log(response.data.User);
+        // console.log(response.data.User);
         const rowData = response.data.User;
         this.setState({ rowData });
       })
