@@ -9,6 +9,34 @@ import knowledgeBaseQuestion from "./views/pages/knowledge-base/Questions";
 import { ContextLayout } from "./utility/context/Layout";
 import EditAsset from "./views/apps/plan/EditPlanType";
 
+const listprivacypolicy = lazy(() =>
+  import("./views/pages/BusinessPolicy/Listprivacypolicy")
+);
+const privacypolicy = lazy(() =>
+  import("./views/pages/BusinessPolicy/Privacypolicy")
+);
+const PrivacyPolicyList = lazy(() =>
+  import("./views/pages/BusinessPolicy/PrivacyPolicyList")
+);
+
+const EditPrivacyPolicy = lazy(() =>
+  import("./views/pages/BusinessPolicy/EditPolicy")
+);
+const listtermsandcondition = lazy(() =>
+  import("./views/pages/BusinessPolicy/Listtermsandcondition")
+);
+const termsandcondition = lazy(() =>
+  import("./views/pages/BusinessPolicy/TermsandConditions")
+);
+const EditTermsConditions = lazy(() =>
+  import("./views/pages/BusinessPolicy/EditTermsConditions")
+);
+const managefaq = lazy(() => import("./views/pages/BusinessPolicy/Managefaq"));
+const listfaq = lazy(() => import("./views/pages/BusinessPolicy/Listfaq"));
+const AddFaq = lazy(() => import("./views/pages/BusinessPolicy/AddFaq"));
+const managefaqedir = lazy(() =>
+  import("./views/pages/BusinessPolicy/Managefaqedit")
+);
 const analyticsDashboard = lazy(() =>
   import("./views/dashboard/analytics/AnalyticsDashboard")
 );
@@ -154,6 +182,15 @@ const NomineeList = lazy(() => import("./views/apps/zimmedari/NomineeList"));
 const ViewNominee = lazy(() => import("./views/apps/zimmedari/ViewNominee"));
 const EditNominee = lazy(() => import("./views/apps/zimmedari/EditNominee"));
 
+const UserAssetData = lazy(() =>
+  import("./views/apps/zimmedari/report/UserAssetData")
+);
+const TransactionReport = lazy(() =>
+  import("./views/apps/zimmedari/report/TransactionReport")
+);
+const BusinessReport = lazy(() =>
+  import("./views/apps/zimmedari/report/BusinessReport")
+);
 // meri zimmedari close
 // Claims
 const ViewClaims = lazy(() => import("./views/apps/claims/ViewClaims"));
@@ -173,6 +210,12 @@ const EditPlanPrice = lazy(() =>
 );
 const ViewPlanPrice = lazy(() =>
   import("./views/apps/planPrice/ViewPlanPrice")
+);
+const managedeathcirtificate = lazy(() =>
+  import("./views/apps/plan/ManageDeathCertificate")
+);
+const duelifedeclaration = lazy(() =>
+  import("./views/apps/plan/Duelifedeclaration")
 );
 const AssetList = lazy(() => import("./views/apps/plan/PlanTypeList"));
 const ViewAsset = lazy(() => import("./views/apps/plan/ViewAsset"));
@@ -267,7 +310,7 @@ const AddRefferalWallet = lazy(() =>
 );
 //FAQ//
 const FaqList = lazy(() => import("./views/apps/faq/FaqList"));
-const AddFaq = lazy(() => import("./views/apps/faq/AddFaq"));
+// const AddFaq = lazy(() => import("./views/apps/faq/AddFaq"));
 const EditFaq = lazy(() => import("./views/apps/faq/EditFaq"));
 
 //Premium//
@@ -453,6 +496,7 @@ const ReactTables = lazy(() =>
 const Aggrid = lazy(() => import("./views/tables/aggrid/Aggrid"));
 const DataTable = lazy(() => import("./views/tables/data-tables/DataTables"));
 const profile = lazy(() => import("./views/pages/profile/Profile"));
+
 const ChangePassword = lazy(() =>
   import("./views/pages/profile/ChangePassword")
 );
@@ -580,6 +624,26 @@ class AppRouter extends React.Component {
               path="/app/membercontent/memberShipContent"
               component={MemberShipContent}
             />
+            <AppRoute path="/ManageFaq" component={managefaq} />
+            <AppRoute path="/listprivacypolicy" component={listprivacypolicy} />
+            <AppRoute path="/privacypolicy" component={privacypolicy} />
+            <AppRoute path="/PrivacyPolicyList" component={PrivacyPolicyList} />
+            <AppRoute
+              path="/EditPrivacyPolicy/:id"
+              component={EditPrivacyPolicy}
+            />
+            <AppRoute path="/termsandcondition" component={termsandcondition} />
+            <AppRoute
+              path="/EditTermsConditions/:id"
+              component={EditTermsConditions}
+            />
+            <AppRoute
+              path="/listtermsandcondition"
+              component={listtermsandcondition}
+            />
+            <AppRoute path="/Listfaq" component={listfaq} />
+            <AppRoute path="/AddFaq" component={AddFaq} />
+            <AppRoute path="/Managefaqedir" component={managefaqedir} />
             <AppRoute
               path="/app/membercontent/editMemContent/:id"
               component={EditMemContent}
@@ -692,6 +756,18 @@ class AppRouter extends React.Component {
             />
             {/* zimmedari route open */}
             <AppRoute path="/app/user/UserList" component={UserList} />
+            <AppRoute
+              path="/app/report/UserAssetData"
+              component={UserAssetData}
+            />
+            <AppRoute
+              path="/app/report/TransactionReport"
+              component={TransactionReport}
+            />
+            <AppRoute
+              path="/app/report/BusinessReport"
+              component={BusinessReport}
+            />
             <AppRoute path="/app/nominee/NomineeList" component={NomineeList} />
             <AppRoute path="/app/nominee/ViewNominee" component={ViewNominee} />
             <AppRoute path="/app/nominee/EditNominee" component={EditNominee} />
@@ -711,9 +787,17 @@ class AppRouter extends React.Component {
               path="/app/plan/ViewPlanPrice/:id"
               component={ViewPlanPrice}
             />
+            <AppRoute
+              path="/duelifedeclaration"
+              component={duelifedeclaration}
+            />
             <AppRoute path="/app/asset/EditAsset/:id" component={EditAsset} />
             <AppRoute path="/app/asset/ViewAsset/:id" component={ViewAsset} />
             <AppRoute path="/app/assets/AsstesList" component={AssetList} />
+            <AppRoute
+              path="/managedeathcirtificate"
+              component={managedeathcirtificate}
+            />
             <AppRoute
               path="/app/policy/PolicyTypeList"
               component={PolicyTypeList}

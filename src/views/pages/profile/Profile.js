@@ -69,7 +69,7 @@ class Profile extends React.Component {
   };
 
   submitHandler = (e) => {
-    let adminId = localStorage.getItem("userId");
+    let adminId = localStorage.getItem("AdminId");
     e.preventDefault();
 
     const data = new FormData();

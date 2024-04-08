@@ -83,18 +83,7 @@ export default class EditPlanType extends Component {
   render() {
     return (
       <div>
-        <Row>
-          <Col sm="12">
-            <div>
-              <Breadcrumb listTag="div">
-                <BreadcrumbItem href="/" tag="a">
-                  Home
-                </BreadcrumbItem>
-                <BreadcrumbItem active>Edit Asset</BreadcrumbItem>
-              </Breadcrumb>
-            </div>
-          </Col>
-        </Row>
+        
         <Card>
           <Row className="m-2">
             <Col>
@@ -117,21 +106,25 @@ export default class EditPlanType extends Component {
           </Row>
           <CardBody>
             <Form className="m-1" onSubmit={this.submitHandler}>
+            <Row>
+            <Col lg="6" md="6" sm="12" className="mb-2">
+              <Label style={{fontSize:'18px'}}>Asset Name</Label>
+              <Input
+              style={{fontSize:'18px'}}
+                type="text"
+                name="policynumber"
+                placeholder="Asset Name"
+                value={this.state.policynumber}
+                onChange={this.changeHandler}
+              />
+            </Col>
+            </Row>
               <Row>
+             
                 <Col lg="6" md="6" sm="12" className="mb-2">
-                  <Label>Policy Number </Label>
+                  <Label style={{fontSize:'18px'}}>Field 1</Label>
                   <Input
-                    type="text"
-                    name="policynumber"
-                    placeholder="policynumber"
-                    value={this.state.policynumber}
-                    onChange={this.changeHandler}
-                  />
-                </Col>
-
-                <Col lg="6" md="6" sm="12" className="mb-2">
-                  <Label>Policy IssuersName</Label>
-                  <Input
+                  style={{fontSize:'18px'}}
                     type="text"
                     name="policyIssuersName"
                     placeholder="policyIssuersName"
@@ -140,8 +133,31 @@ export default class EditPlanType extends Component {
                   />
                 </Col>
                 <Col lg="6" md="6" sm="12" className="mb-2">
-                  <Label>ReEnter PolicyNumber</Label>
+                  <Label style={{fontSize:'18px'}}>Field 2</Label>
                   <Input
+                  style={{fontSize:'18px'}}
+                    type="text"
+                    name="ReEnterPolicyNumber"
+                    placeholder="ReEnterPolicyNumber"
+                    value={this.state.ReEnterPolicyNumber}
+                    onChange={this.changeHandler}
+                  />
+                </Col>
+                <Col lg="6" md="6" sm="12" className="mb-2">
+                  <Label style={{fontSize:'18px'}}>Field 3</Label>
+                  <Input
+                  style={{fontSize:'18px'}}
+                    type="text"
+                    name="ReEnterPolicyNumber"
+                    placeholder="ReEnterPolicyNumber"
+                    value={this.state.ReEnterPolicyNumber}
+                    onChange={this.changeHandler}
+                  />
+                </Col>
+                <Col lg="6" md="6" sm="12" className="mb-2">
+                  <Label style={{fontSize:'18px'}}>Field 4</Label>
+                  <Input
+                  style={{fontSize:'18px'}}
                     type="text"
                     name="ReEnterPolicyNumber"
                     placeholder="ReEnterPolicyNumber"
@@ -173,23 +189,15 @@ export default class EditPlanType extends Component {
                   </div>
                 </Col> */}
               </Row>
-              <Row>
-                <Col
-                  lg="6"
-                  md="6"
-                  sm="6"
-                  className="mb-2"
-                  style={{ marginLeft: "15px" }}
-                >
-                  <Button.Ripple
-                    color="primary"
-                    type="submit"
-                    className="mr-1 mb-1"
-                  >
-                    Update PlanType
-                  </Button.Ripple>
-                </Col>
-              </Row>
+              <div style={{justifyContent:'right',display:'flex'}}>
+              <Button.Ripple
+              style={{backgroundColor:'#2966ac'}}
+               type="submit"
+               className="mr-1 mb-1"
+             >
+               Update 
+             </Button.Ripple>
+              </div>
             </Form>
           </CardBody>
         </Card>

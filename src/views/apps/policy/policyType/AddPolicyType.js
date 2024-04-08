@@ -41,7 +41,7 @@ class AddPolicyType extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   };
   submitHandler = (e) => {
-    const adminId = localStorage.getItem("userId");
+    const adminId = localStorage.getItem("AdminId");
     e.preventDefault();
     const description = {
       pt_type: this.state.policyType,

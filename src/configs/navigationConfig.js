@@ -8,29 +8,85 @@ const navigationConfig = [
     permissions: ["admin", "editor"],
     navLink: "/",
   },
-  // {
-  //   type: "groupHeader",
-  //   groupTitle: "Plans",
-  // },
   {
-    id: "home",
-    title: "Home",
+    type: "groupHeader",
+    groupTitle: "Business Policy",
+  },
+
+  {
+    id: "Terms&Conditions",
+    title: "Terms & Conditions",
     type: "item",
     icon: <Icon.ArrowRight size={12} />,
     permissions: ["admin", "editor"],
-    // navLink: "/app/plans/CreatedPlanList",
+    navLink: "/listtermsandcondition",
+    // navLink: "/termsandcondition",
   },
-  // {
-  //   id: "Manage",
-  //   title: "Manage Auth ",
-  //   type: "item",
-  //   icon: <Icon.ArrowRight size={12} />,
-  //   permissions: ["admin", "editor"],
-  //   // navLink: "/app/plans/CreatedPlanList",
-  // },
   {
-    id: "USERLIST ",
-    title: "USER LIST ",
+    id: "PrivacyPolicy",
+    title: "Privacy Policy ",
+    type: "item",
+    icon: <Icon.ArrowRight size={12} />,
+    permissions: ["admin", "editor"],
+    navLink: "/PrivacyPolicyList",
+  },
+  {
+    id: "FAQ",
+    title: "FAQ",
+    type: "item",
+    icon: <Icon.ArrowRight size={12} />,
+    permissions: ["admin", "editor"],
+    // navLink: "/AddFaq",
+    navLink: "/Listfaq",
+  },
+  {
+    type: "groupHeader",
+    groupTitle: "Operations",
+  },
+  {
+    id: "ManageAsset",
+    title: "Manage Asset",
+    type: "item",
+    icon: <Icon.ArrowRight size={12} />,
+    permissions: ["admin", "editor"],
+    navLink: "/app/assets/AsstesList",
+  },
+
+  {
+    id: "DueLifeDeclarations",
+    title: "Due Life Declarations",
+    type: "item",
+    icon: <Icon.ArrowRight size={12} />,
+    permissions: ["admin", "editor"],
+    navLink: "/duelifedeclaration",
+  },
+  {
+    id: "ManageDeathCertificate",
+    title: "Manage Death Certificate",
+    type: "item",
+    icon: <Icon.ArrowRight size={12} />,
+    permissions: ["admin", "editor"],
+    navLink: "/managedeathcirtificate",
+  },
+
+  {
+    id: "ManageSubscription",
+    title: "Manage Subscription",
+    type: "item",
+    icon: <Icon.ArrowRight size={12} />,
+    permissions: ["admin", "editor"],
+    navLink: "",
+  },
+
+  {
+    type: "groupHeader",
+    groupTitle: "Reports",
+  },
+
+  {
+    id: "RegisteredUserdata",
+    title: "Registered User Data",
+    // title: "Individual User Data",
     type: "item",
     icon: <Icon.ArrowRight size={12} />,
     permissions: ["admin", "editor"],
@@ -38,12 +94,37 @@ const navigationConfig = [
   },
   {
     id: "Nominee ",
-    title: "Nominee List ",
+    title: "Nominee Data",
     type: "item",
     icon: <Icon.ArrowRight size={12} />,
     permissions: ["admin", "editor"],
     navLink: "/app/nominee/NomineeList",
   },
+  {
+    id: "UserAssetData",
+    title: "User Asset Data",
+    type: "item",
+    icon: <Icon.ArrowRight size={12} />,
+    permissions: ["admin", "editor"],
+    navLink: "/app/report/UserAssetData",
+  },
+  {
+    id: "TransactionReport",
+    title: "Transaction Report",
+    type: "item",
+    icon: <Icon.ArrowRight size={12} />,
+    permissions: ["admin", "editor"],
+    navLink: "/app/report/TransactionReport",
+  },
+  {
+    id: "BusinessReport",
+    title: "Business Report",
+    type: "item",
+    icon: <Icon.ArrowRight size={12} />,
+    permissions: ["admin", "editor"],
+    navLink: "/app/report/BusinessReport",
+  },
+
   // {
   //   id: "claim",
   //   title: "Claims Bordereaux",
@@ -53,14 +134,6 @@ const navigationConfig = [
   //   // navLink: "/app/plans/CreatedPlanList",
   // },
 
-  {
-    id: "AssetList",
-    title: "Asset List",
-    type: "item",
-    icon: <Icon.ArrowRight size={12} />,
-    permissions: ["admin", "editor"],
-    navLink: "/app/assets/AsstesList",
-  },
   // {
   //   id: "createPlan",
   //   title: "Created PlanList",
@@ -235,10 +308,10 @@ const navigationConfig = [
   //   permissions: ["admin", "editor"],
   //   navLink: "/app/ContactUs/ContactUsList",
   // },
-  // {
-  //   type: "groupHeader",
-  //   groupTitle: "Profile Page",
-  // },
+  {
+    type: "groupHeader",
+    groupTitle: "Profile Page",
+  },
 
   {
     id: "profile",

@@ -32,7 +32,7 @@ const NavbarUser = () => {
   };
 
   useEffect(() => {
-    let adminId = localStorage.getItem("userId");
+    let adminId = localStorage.getItem("AdminId");
     // tokenVerify();
     // async function getNotifications() {
     //   try {

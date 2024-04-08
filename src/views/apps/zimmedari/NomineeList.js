@@ -39,65 +39,99 @@ class NomineeList extends React.Component {
         width: 100,
         filter: true,
       },
-      {
-        headerName: "Actions",
-        field: "sortorder",
-        width: 200,
-        // pinned: window.innerWidth > 992 ? "right" : false,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="actions cursor-pointer">
-              <Route
-                render={({ history }) => (
-                  <Eye
-                    className="mr-50"
-                    size="25px"
-                    color="green"
-                    onClick={() =>
-                      history.push({
-                        pathname: `/app/nominee/ViewNominee/${params.data?._id}`,
-                        state: params,
-                      })
-                    }
-                  />
-                )}
-              />
-              {/* <Route
-                render={({ history }) => (
-                  <Edit
-                    className="mr-50"
-                    size="25px"
-                    color="blue"
-                    onClick={() =>
-                      history.push({
-                        pathname: `/app/nominee/EditNominee/${params.data?._id}`,
-                        state: params.data,
-                      })
-                    }
-                  />
-                )}
-              /> */}
+      // {
+      //   headerName: "Actions",
+      //   field: "sortorder",
+      //   width: 200,
+      //   // pinned: window.innerWidth > 992 ? "right" : false,
+      //   cellRendererFramework: (params) => {
+      //     return (
+      //       <div className="actions cursor-pointer">
+      //         <Route
+      //           render={({ history }) => (
+      //             <Eye
+      //               className="mr-50"
+      //               size="25px"
+      //               color="green"
+      //               onClick={() =>
+      //                 history.push({
+      //                   pathname: `/app/nominee/ViewNominee/${params.data?._id}`,
+      //                   state: params,
+      //                 })
+      //               }
+      //             />
+      //           )}
+      //         />
+      //         <Route
+      //           render={({ history }) => (
+      //             <Edit
+      //               className="mr-50"
+      //               size="25px"
+      //               color="blue"
+      //               onClick={() =>
+      //                 history.push({
+      //                   pathname: `/app/nominee/EditNominee/${params.data?._id}`,
+      //                   state: params.data,
+      //                 })
+      //               }
+      //             />
+      //           )}
+      //         />
 
-              {/* <Trash2
-                className="mr-50"
-                size="25px"
-                color="red"
-                onClick={() => {
-                  this.runthisfunction(params.data?._id);
-                }}
-              /> */}
-            </div>
-          );
-        },
-      },
-
+      //         <Trash2
+      //           className="mr-50"
+      //           size="25px"
+      //           color="red"
+      //           onClick={() => {
+      //             this.runthisfunction(params.data?._id);
+      //           }}
+      //         />
+      //       </div>
+      //     );
+      //   },
+      // },
       {
-        headerName: "UserName ",
+        headerName: "User ID ",
         field: "name",
         filter: true,
         width: 150,
         cellRendererFramework: (params) => {
+          return <div className="">{params?.data?._id}</div>;
+        },
+      },
+      {
+        headerName: "UserName",
+        field: "name",
+        filter: true,
+        width: 250,
+        cellRendererFramework: (params) => {
           return <div className="">{params?.data?.userId.firstName}</div>;
+        },
+      },
+      {
+        headerName: "PhoneNumber",
+        field: "PhoneNumber",
+        filter: true,
+        width: 220,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="">
+              {params?.data?.nominee?.map((ele) => ele?.NomineePhoneNumber)}
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Nominee ID",
+        field: "Nominee",
+        filter: true,
+        width: 220,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="">
+              {params?.data?.nominee?.map((ele) => ele?._id)}
+            </div>
+          );
         },
       },
       {
@@ -109,32 +143,6 @@ class NomineeList extends React.Component {
           return (
             <div className="">
               {params?.data?.nominee?.map((ele) => ele?.nomineeName)}
-            </div>
-          );
-        },
-      },
-      {
-        headerName: "Email",
-        field: "email",
-        filter: true,
-        width: 150,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="">
-              {params?.data?.nominee?.map((ele) => ele?.nomineeEmailId)}
-            </div>
-          );
-        },
-      },
-      {
-        headerName: " PhoneNumber",
-        field: "NomineePhoneNumber",
-        filter: true,
-        width: 220,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="">
-              {params?.data?.nominee?.map((ele) => ele?.NomineePhoneNumber)}
             </div>
           );
         },
@@ -153,18 +161,58 @@ class NomineeList extends React.Component {
         },
       },
       {
-        headerName: "PercentageofShare",
+        headerName: "Nominee PhoneNo",
         field: "relationWithNominee",
         filter: true,
         width: 200,
         cellRendererFramework: (params) => {
           return (
             <div className="" style={{ width: "100" }}>
-              {params?.data?.nominee?.map((ele) => ele?.percentageofShar)}
+              {params?.data?.nominee?.map((ele) => ele?.relationWithNominee)}
             </div>
           );
         },
       },
+      {
+        headerName: "Nominee PhoneNo.Status",
+        field: "relationWithNominee",
+        filter: true,
+        width: 250,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="" style={{ width: "100" }}>
+              {params?.data?.nominee?.map((ele) => ele?.relationWithNominee)}
+            </div>
+          );
+        },
+      },
+      {
+        headerName: "Nominee Email",
+        field: "email",
+        filter: true,
+        width: 200,
+        cellRendererFramework: (params) => {
+          return (
+            <div className="">
+              {params?.data?.nominee?.map((ele) => ele?.nomineeEmailId)}
+            </div>
+          );
+        },
+      },
+
+      // {
+      //   headerName: "PercentageofShare",
+      //   field: "relationWithNominee",
+      //   filter: true,
+      //   width: 200,
+      //   cellRendererFramework: (params) => {
+      //     return (
+      //       <div className="" style={{ width: "100" }}>
+      //         {params?.data?.nominee?.map((ele) => ele?.percentageofShar)}
+      //       </div>
+      //     );
+      //   },
+      // },
 
       // {
       //   headerName: "Status",
@@ -182,14 +230,22 @@ class NomineeList extends React.Component {
     ],
   };
   componentDidMount() {
-    this.NomineeList();
+    let AdminId = localStorage.getItem("AdminId");
+    this.NomineeList(AdminId);
   }
-  NomineeList = () => {
+  NomineeList = (AdminId) => {
+    console.log("adminIDddd", AdminId);
     axiosConfig
-      .get("/nominee/view-nominee")
+      .get(`/asset/nominee-list/${AdminId}`)
       .then((response) => {
-        console.log(response.data?.Nominee);
+        console.log(response.data);
         const rowData = response.data?.Nominee;
+        // let list = rowData?.flatMap((element) => {
+        //   return element?.nominee?.map((val, i) => {
+        //     return { ...element, nominee: val };
+        //   });
+        // });
+        // debugger;
         this.setState({ rowData });
       })
       .catch((err) => {

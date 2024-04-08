@@ -120,7 +120,7 @@ class AddPlanType extends React.Component {
             <Form className="m-1" onSubmit={this.submitHandler1}>
               <Row>
                 <Col lg="6" md="6" sm="12" className="mb-2">
-                  <Label>Assets</Label>
+                  <Label style={{fontSize:'18px',textTransform:'capitalize',marginBottom:'10px'}}>bulk upload</Label>
                   <Input
                     type="file"
                     name="assetName"
@@ -140,21 +140,26 @@ class AddPlanType extends React.Component {
               <h2>Asset Fields</h2>
             </Form>
             <Form className="m-1" onSubmit={this.submitHandler}>
+            <Row>
+            <Col lg="6" md="6" sm="12" className="mb-2">
+            <Label style={{fontSize:'18px'}}>Asset Name</Label>
+            <Input
+            style={{fontSize:'18px'}}
+              type="text"
+              name="assetType"
+              value={this.state.assetType}
+              placeholder="Asset Name"
+              onChange={this.handleFileChange}
+            />
+          </Col>
+            </Row>
               <Row>
-                <Col lg="6" md="6" sm="12" className="mb-2">
-                  <Label>Assets Type</Label>
-                  <Input
-                    type="text"
-                    name="assetType"
-                    value={this.state.assetType}
-                    placeholder="Asset Type"
-                    onChange={this.handleFileChange}
-                  />
-                </Col>
+               
 
                 <Col lg="6" md="6" sm="12" className="mb-2">
-                  <Label>Filed 1</Label>
+                  <Label style={{fontSize:'18px'}}>Filed 1</Label>
                   <Input
+                  style={{fontSize:'18px'}}
                     type="text"
                     placeholder="Field 1"
                     name="field1"
@@ -163,8 +168,9 @@ class AddPlanType extends React.Component {
                   />
                 </Col>
                 <Col lg="6" md="6" sm="12" className="mb-2">
-                  <Label>Filed 2</Label>
+                  <Label style={{fontSize:'18px'}}>Filed 2</Label>
                   <Input
+                  style={{fontSize:'18px'}}
                     type="text"
                     placeholder="Field 2"
                     name="field2"
@@ -173,8 +179,9 @@ class AddPlanType extends React.Component {
                   />
                 </Col>
                 <Col lg="6" md="6" sm="12" className="mb-2">
-                  <Label>Filed 3</Label>
+                  <Label style={{fontSize:'18px'}}>Filed 3</Label>
                   <Input
+                  style={{fontSize:'18px'}}
                     type="text"
                     placeholder="Field 3"
                     name="field3"
@@ -183,8 +190,9 @@ class AddPlanType extends React.Component {
                   />
                 </Col>
                 <Col lg="6" md="6" sm="12" className="mb-2">
-                  <Label>Filed 4</Label>
+                  <Label style={{fontSize:'18px'}}>Filed 4</Label>
                   <Input
+                  style={{fontSize:'18px'}}
                     type="text"
                     placeholder="Field 4"
                     name="field4"
@@ -192,6 +200,7 @@ class AddPlanType extends React.Component {
                     onChange={this.handleFileChange}
                   />
                 </Col>
+                {/*
                 <Col lg="6" md="6" sm="12" className="">
                   <Label for="data-category">Drop_down_Menu_Options</Label>
                   <FormGroup>
@@ -221,17 +230,18 @@ class AddPlanType extends React.Component {
                     </Input>
                   </FormGroup>
                 </Col>
+                 */}
               </Row>
               <Row>
-                <Col lg="6" md="6" sm="6" className="mb-2">
-                  <Button.Ripple
-                    color="primary"
-                    type="submit"
-                    className="mr-1 mb-1"
-                  >
-                    Submit
-                  </Button.Ripple>
-                </Col>
+                <div style={{justifyContent:'right',display:'flex'}}>
+                <Button.Ripple
+                color="primary"
+                type="submit"
+                className="mr-1 mb-1"
+              >
+                Submit
+              </Button.Ripple>
+                </div>
               </Row>
             </Form>
           </CardBody>

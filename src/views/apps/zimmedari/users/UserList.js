@@ -39,46 +39,55 @@ class UserList extends React.Component {
         width: 100,
         filter: true,
       },
-      {
-        headerName: "Actions",
-        field: "sortorder",
-        width: 200,
-        // pinned: window.innerWidth > 992 ? "right" : false,
-        cellRendererFramework: (params) => {
-          return (
-            <div className="actions cursor-pointer">
-              {/* <Route
-                render={({ history }) => (
-                  <Edit
-                    className="mr-50"
-                    size="25px"
-                    color="blue"
-                    onClick={() =>
-                      history.push({
-                        pathname: `/app/plan/EditPlanType/${params.data._id}`,
-                        state: params.data,
-                      })
-                    }
-                  />
-                )}
-              /> */}
+      // {
+      //   headerName: "Actions",
+      //   field: "sortorder",
+      //   width: 200,
+      //   // pinned: window.innerWidth > 992 ? "right" : false,
+      //   cellRendererFramework: (params) => {
+      //     return (
+      //       <div className="actions cursor-pointer">
+      //         <Route
+      //           render={({ history }) => (
+      //             <Edit
+      //               className="mr-50"
+      //               size="25px"
+      //               color="blue"
+      //               onClick={() =>
+      //                 history.push({
+      //                   pathname: `/app/plan/EditPlanType/${params.data._id}`,
+      //                   state: params.data,
+      //                 })
+      //               }
+      //             />
+      //           )}
+      //         />
 
-              {/* <Trash2
-                className="mr-50"
-                size="25px"
-                color="red"
-                onClick={() => {
-                  this.runthisfunction(params.data._id);
-                }}
-              /> */}
-            </div>
-          );
+      //         <Trash2
+      //           className="mr-50"
+      //           size="25px"
+      //           color="red"
+      //           onClick={() => {
+      //             this.runthisfunction(params.data._id);
+      //           }}
+      //         />
+      //       </div>
+      //     );
+      //   },
+      // },
+
+      {
+        headerName: "User ID",
+        field: "User ID",
+        filter: true,
+        width: 240,
+        cellRendererFramework: (params) => {
+          return <div className="">{params?.data?._id}</div>;
         },
       },
-
       {
-        headerName: "Name",
-        field: "name",
+        headerName: "User Name",
+        field: "UserName",
         filter: true,
         width: 150,
         cellRendererFramework: (params) => {
@@ -86,47 +95,113 @@ class UserList extends React.Component {
         },
       },
       {
-        headerName: "Email",
-        field: "email",
+        headerName: "Date of Birth",
+        field: "dob",
         filter: true,
         width: 150,
+        cellRendererFramework: (params) => {
+          return <div className=""></div>;
+        },
+      },
+      {
+        headerName: "Gender",
+        field: "Gender",
+        filter: true,
+        width: 150,
+        cellRendererFramework: (params) => {
+          return <div className=""></div>;
+        },
+      },
+      {
+        headerName: "Phone Number",
+        field: "PhoneNumber",
+        filter: true,
+        width: 190,
+        cellRendererFramework: (params) => {
+          return <div className=""></div>;
+        },
+      },
+      {
+        headerName: "Email ID",
+        field: "email",
+        filter: true,
+        width: 240,
         cellRendererFramework: (params) => {
           return <div className="">{params?.data?.email}</div>;
         },
       },
       {
-        headerName: "Image",
-        field: "Image",
+        headerName: "Email Status",
+        field: "email",
         filter: true,
         width: 150,
         cellRendererFramework: (params) => {
-          return (
-            <div className="mainImg">
-              <img
-                className="Picture"
-                style={{ width: "160px" }}
-                src={params?.data?.image}
-                alt="Img"
-              />
-            </div>
-          );
+          return <div className=""> Not Verified</div>;
         },
       },
-      //   {
-      //     headerName: "PlanType Description",
-      //     field: "Description",
-      //     filter: true,
-      //     width: 500,
-      //     cellRendererFramework: (params) => {
-      //       return (
-      //         <div className="">
-      //           <span className="">
-      //             {ReactHtmlParser(params?.data?.plan_desc)}
-      //           </span>
-      //         </div>
-      //       );
-      //     },
-      //   },
+      {
+        headerName: "Registration Date",
+        field: "registeration",
+        filter: true,
+        width: 190,
+        cellRendererFramework: (params) => {
+          return <div className=""> 01/02/2024</div>;
+        },
+      },
+      {
+        headerName: "Subscription Status",
+        field: "Subscription",
+        filter: true,
+        width: 230,
+        cellRendererFramework: (params) => {
+          return <div className="">Pending</div>;
+        },
+      },
+      {
+        headerName: "Subscription Plan",
+        field: "Plan",
+        filter: true,
+        width: 190,
+        cellRendererFramework: (params) => {
+          return <div className=""></div>;
+        },
+      },
+      {
+        headerName: "No.Of Nominee Added",
+        field: "Nominee",
+        filter: true,
+        width: 230,
+        cellRendererFramework: (params) => {
+          return <div className=""></div>;
+        },
+      },
+      {
+        headerName: "No.Of Asset Type Added",
+        field: "Asset",
+        filter: true,
+        width: 230,
+        cellRendererFramework: (params) => {
+          return <div className=""></div>;
+        },
+      },
+      {
+        headerName: "No. Of Total Asset Added",
+        field: "Total",
+        filter: true,
+        width: 230,
+        cellRendererFramework: (params) => {
+          return <div className=""></div>;
+        },
+      },
+      {
+        headerName: "No.Of Confidential Note Added",
+        field: "Confidential",
+        filter: true,
+        width: 250,
+        cellRendererFramework: (params) => {
+          return <div className=""></div>;
+        },
+      },
     ],
   };
   componentDidMount() {

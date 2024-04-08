@@ -36,13 +36,25 @@ class AssetList extends React.Component {
         headerName: "S.No",
         valueGetter: "node.rowIndex + 1",
         field: "node.rowIndex + 1",
-        width: 100,
+        width:100,
+      
         filter: true,
+      },
+      {
+        headerName: "Assets Name",
+        field: "PlanType",
+        // filter: true,
+        width:700,
+       
+        cellRendererFramework: (params) => {
+          return <div className="">{params?.data?.policyIssuersName}</div>;
+        },
       },
       {
         headerName: "Actions",
         field: "sortorder",
-        width: 200,
+        width:200,
+       
         // pinned: window.innerWidth > 992 ? "right" : false,
         cellRendererFramework: (params) => {
           return (
@@ -62,7 +74,7 @@ class AssetList extends React.Component {
                   />
                 )}
               />
-              {/* <Route
+              <Route
                 render={({ history }) => (
                   <Edit
                     className="mr-50"
@@ -76,39 +88,31 @@ class AssetList extends React.Component {
                     }
                   />
                 )}
-              /> */}
+              /> 
 
-              {/* <Trash2
+              <Trash2
                 className="mr-50"
                 size="25px"
                 color="red"
                 onClick={() => {
                   this.runthisfunction(params.data?._id);
                 }}
-              /> */}
+              /> 
             </div>
           );
         },
       },
 
-      {
-        headerName: "PolicyIssuersName",
-        field: "PlanType",
-        // filter: true,
-        width: 180,
-        cellRendererFramework: (params) => {
-          return <div className="">{params?.data?.policyIssuersName}</div>;
-        },
-      },
-      {
-        headerName: "Policy Number",
-        field: "PlanType",
-        // filter: true,
-        width: 180,
-        cellRendererFramework: (params) => {
-          return <div className="">{params?.data?.policynumber}</div>;
-        },
-      },
+     
+      // {
+      //   headerName: "Policy Number",
+      //   field: "PlanType",
+      //   // filter: true,
+      //   width: 180,
+      //   cellRendererFramework: (params) => {
+      //     return <div className="">{params?.data?.policynumber}</div>;
+      //   },
+      // },
       // {
       //   headerName: "status",
       //   field: "PlanType",
@@ -118,15 +122,15 @@ class AssetList extends React.Component {
       //     return <div className="">{params?.data?.status}</div>;
       //   },
       // },
-      {
-        headerName: "ReEnterPolicyNumber",
-        field: "reEnterPolicyNumber",
-        // filter: true,
-        width: 250,
-        cellRendererFramework: (params) => {
-          return <div className="">{params?.data?.ReEnterPolicyNumber}</div>;
-        },
-      },
+      // {
+      //   headerName: "ReEnterPolicyNumber",
+      //   field: "reEnterPolicyNumber",
+      //   // filter: true,
+      //   width: 250,
+      //   cellRendererFramework: (params) => {
+      //     return <div className="">{params?.data?.ReEnterPolicyNumber}</div>;
+      //   },
+      // },
     ],
   };
   componentDidMount() {
@@ -205,17 +209,7 @@ class AssetList extends React.Component {
               </h1>
             </Col>
             <Col className="">
-              <Route
-                render={({ history }) => (
-                  <Button
-                    className=" btn  float-right"
-                    color="primary"
-                    onClick={() => history.push("/app/AddAssets")}
-                  >
-                    Add Assets
-                  </Button>
-                )}
-              />
+             
             </Col>
           </Row>
 
@@ -267,16 +261,31 @@ class AssetList extends React.Component {
                       </DropdownMenu>
                     </UncontrolledDropdown>
                   </div>
-                  <div className="d-flex flex-wrap justify-content-between mb-1">
-                    <div className="table-input mr-1">
+                  <div className="d-flex flex-wrap  mb-1">
+                    <div className="table-input mr-1" >
                       <Input
+                        className="cssformanageassetinput cssmartopmargin"
                         placeholder="search..."
                         onChange={(e) => this.updateSearchQuery(e.target.value)}
                         value={this.state.value}
                       />
                     </div>
-                    <div className="export-btn">
+                    <div style={{marginRight:'10px'}}>
+                    <Route
+                    render={({ history }) => (
+                      <Button
+                        className=" btn  float-right cssmartopmargin"
+                        color="primary"
+                        onClick={() => history.push("/app/AddAssets")}
+                      >
+                        Add Assets
+                      </Button>
+                    )}
+                  />
+                    </div>
+                    <div>
                       <Button.Ripple
+                      className='cssmartopmargin'
                         color="primary"
                         onClick={() => this.gridApi.exportDataAsCsv()}
                       >

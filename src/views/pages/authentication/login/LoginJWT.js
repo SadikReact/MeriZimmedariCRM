@@ -25,7 +25,7 @@ class LoginJWT extends React.Component {
 
   // handleSubmitOTP = async (e) => {
   //   e.preventDefault();
-  //   let adminId = localStorage.getItem("userId");
+  //   let adminId = localStorage.getItem("AdminId");
   //   let payload = {
   //     otp: this.state.emailotp,
   //   };
@@ -65,7 +65,8 @@ class LoginJWT extends React.Component {
           // this.setState({ ShowScreen: true });
           localStorage.setItem("ad-token", response.data.Admin?.token);
           localStorage.setItem("AdminData", JSON.stringify(response.data));
-          localStorage.setItem("userId", response.data.Admin._id);
+          localStorage.setItem("AdminId", response.data.Admin._id);
+          console.log(response.data);
           window.location.replace("/#");
           swal("Login Successfully");
         } else if (response.status === 204 || response.status === 400) {

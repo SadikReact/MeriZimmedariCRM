@@ -404,7 +404,7 @@ class EditPlanBenefit extends React.Component {
 
   submitHandler = (e) => {
     e.preventDefault();
-    const adminId = localStorage.getItem("userId");
+    const adminId = localStorage.getItem("AdminId");
     const payload = {
       planBenefitsCode: this.state.planBenefitsCode,
       policy_ID_fk: this.state.policyName,

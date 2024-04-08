@@ -79,7 +79,6 @@ export default class Editopportunity extends Component {
       .then((response) => {
         console.log(response.data.data);
         swal("Success!", "Submitted SuccessFull!", "success");
-        // this.props.history.push("/app/explore/Trupee/startUp");
       })
       .catch((error) => {
         console.log(error);
